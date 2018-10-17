@@ -5,6 +5,7 @@ import PlaceInput from "./src/components/PlaceInput/PlaceInput";
 import PlaceList from "./src/components/PlaceList/PlaceList";
 import PlaceDetail from "./src/components/PlaceDetail/PlaceDetail";
 import placeImage from "./src/assets/test.jpg";
+import appleImage from "./src/assets/appleImage.jpg"
 import { addPlace, deletePlace, selectPlace, deselectPlace } from './src/store/actions/index';
 
 class App extends Component {
@@ -30,7 +31,7 @@ class App extends Component {
           onItemDeleted={this.placeDeletedHandler} 
           onModalClosed={this.modalClosedHandler}
         ></PlaceDetail>
-        <Image source={placeImage} style={styles.placeImage}/>
+        <Image source={appleImage} style={styles.appleImage}/>
         <PlaceInput onPlaceAdded={this.placeAddedHandler} />
         <PlaceList places={this.props.places} onItemSelected={this.placeSelectedHandler}/>
       </View>
@@ -46,10 +47,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start"
   },
-  placeImage: {
-    marginRight: 8,
-    height: 30,
-    width: 80
+  appleImage: {
+    height: 100,
+    width: 100
 }
 }); 
 
