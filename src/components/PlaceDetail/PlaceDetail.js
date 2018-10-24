@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Text, View, StyleSheet, Image, Button, TouchableOpacity } from 'react-native';
+import Icon from "react-native-vector-icons/Ionicons";
 
 const placeDetail = props => {
     let modalContent = null
@@ -20,23 +21,25 @@ const placeDetail = props => {
             <View style={styles.modalContainer}>
                 {modalContent}
                 <View style={styles.centerButtons}>
-                    <View style={styles.deleteContainer}>
-                        <TouchableOpacity onPress={props.onItemDeleted}>
-                            <View style={styles.deleteButton}>
-                                <Text>Delete</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={styles.closeContainer}>
-                        <TouchableOpacity onPress={props.onModalClosed}>
-                            <View style={styles.closeButton}>
+                {/* </View>*/}
+                <View style={{width:"50%", alignItems: "center"}}>
+                    <TouchableOpacity onPress={props.onModalClosed}>
+                        {/* <View style={styles.closeButton}>
                                 <Text>Close</Text>
-                            </View>
-                        </TouchableOpacity>
+                            </View> */}
+                        <Icon name="md-arrow-back" size={30} color="black" />
+                    </TouchableOpacity>
                     </View>
-                </View>
 
+                <View style={{width:"50%", alignItems: "center"}}>
+                    <TouchableOpacity onPress={props.onItemDeleted}>
+                        {/* <View style={styles.deleteButton}>
+                                <Text>Delete</Text>
+                            </View> */}
+                        <Icon name="md-trash" size={30} color="black" />
+                    </TouchableOpacity>
+                </View>
+                </View>
             </View>
         </Modal>
     )
@@ -64,7 +67,8 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     placeName: {
-        fontWeight: "bold",
+        fontFamily: "Roboto",
+        
         color: "black",
         fontSize: 28,
         justifyContent: "center"
@@ -89,7 +93,9 @@ const styles = StyleSheet.create({
 
     },
     centerButtons: {
-        alignItems: "center"
+        justifyContent: "center",
+        flexDirection: "row",
+        width: "100%"
     }
 })
 export default placeDetail;
