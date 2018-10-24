@@ -6,7 +6,7 @@ const placeDetail = props => {
 
     if (props.selectedPlace) {
         modalContent = (
-            <View>
+            <View style={styles.modalContentContainer}>
                 <Image style={styles.placeImage} source={props.selectedPlace.image} />
                 <Text style={styles.placeName}>{props.selectedPlace.name}</Text>
             </View>
@@ -16,20 +16,27 @@ const placeDetail = props => {
         <Modal
             onRequestClose={props.onModalClosed}
             visible={props.selectedPlace !== null} animationType="slide">
+
             <View style={styles.modalContainer}>
                 {modalContent}
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={props.onItemDeleted}>
-                        <View style={styles.deleteButton}>
-                            <Text>Delete</Text></View>
-                        {/* <Button title="Delete" color="red"/> */}
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={props.onModalClosed}>
-                        <View style={styles.closeButton}>
-                            <Text>Close</Text></View>
-                        {/* <Button title="Delete" color="red"/> */}
-                    </TouchableOpacity>
+                <View style={styles.centerButtons}>
+                    <View style={styles.deleteContainer}>
+                        <TouchableOpacity onPress={props.onItemDeleted}>
+                            <View style={styles.deleteButton}>
+                                <Text>Delete</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.closeContainer}>
+                        <TouchableOpacity onPress={props.onModalClosed}>
+                            <View style={styles.closeButton}>
+                                <Text>Close</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
                 </View>
+
             </View>
         </Modal>
     )
@@ -37,17 +44,24 @@ const placeDetail = props => {
 
 const styles = StyleSheet.create({
     modalContainer: {
-        margin: 22,
+        width: "100%",
+        flexDirection: "column"
 
     },
-    buttonContainer: {
-        flexDirection: "column",
-        justifyContent: "space-between",
+    modalContentContainer: {
+        margin: 20,
         alignItems: "center"
     },
-    placeImage: {
+    deleteContainer: {
         width: "100%",
+    },
+    closeContainer: {
+        width: "100%",
+    },
+    placeImage: {
+        width: "80%",
         height: 200,
+        justifyContent: "center"
     },
     placeName: {
         fontWeight: "bold",
@@ -66,7 +80,7 @@ const styles = StyleSheet.create({
 
     },
     closeButton: {
-        width: "100%",
+        width: "50%",
         backgroundColor: "#0080ff",
         height: 40,
         borderRadius: 15,
@@ -74,10 +88,7 @@ const styles = StyleSheet.create({
         borderColor: "#fff"
 
     },
-    centerButton: {
-        width: "100%",
-        flexDirection: "row",
-        justifyContent: "space-between",
+    centerButtons: {
         alignItems: "center"
     }
 })
